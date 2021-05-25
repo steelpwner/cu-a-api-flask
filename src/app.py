@@ -38,8 +38,11 @@ def api():
 	dates = list(pd.date_range(start=start,end=end))
 	df = pd.DataFrame({"date":dates,"value":""})
 	df['date_number'] = df.date.astype(np.int64) // 10**9
-	labels = df.iloc[:, 2]
+	print(df)
+	labels = df.iloc[:, [2]].values
+	print(labels)
 	predictions = scaler.inverse_transform(model.predict(labels))
+	print(predictions)
 	df.loc[:, 'value'] = predictions
 	return jsonify(df.iloc[:,:2].to_dict('r'))
 
