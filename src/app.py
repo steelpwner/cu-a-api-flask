@@ -29,7 +29,7 @@ class CustomJSONEncoder(JSONEncoder):
 app = Flask(__name__)
 app.json_encoder = CustomJSONEncoder
 
-@app.route("/api/cuña",methods=["GET","POST"])
+@app.route("/api/get",methods=["GET","POST"])
 def api():
 	body = request.form
 	start = body.get("startDate")
